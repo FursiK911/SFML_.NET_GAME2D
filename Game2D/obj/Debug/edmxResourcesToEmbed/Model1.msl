@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище shop_in_gameModelContainer" CdmEntityContainer="shop_in_gameContext">
+    <EntitySetMapping Name="ITEM_SETS">
+      <EntityTypeMapping TypeName="shop_in_gameModel.ItemSets">
+        <MappingFragment StoreEntitySet="ITEM_SETS">
+          <ScalarProperty Name="idSet" ColumnName="ID_SET" />
+          <ScalarProperty Name="SetName" ColumnName="SET_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMS">
+      <EntityTypeMapping TypeName="shop_in_gameModel.Items">
+        <MappingFragment StoreEntitySet="ITEMS">
+          <ScalarProperty Name="id" ColumnName="ID_ITEM" />
+          <ScalarProperty Name="name" ColumnName="ITEM_NAME" />
+          <ScalarProperty Name="description" ColumnName="ITEM_DESCRIPTION" />
+          <ScalarProperty Name="idType" ColumnName="ID_TYPE" />
+          <ScalarProperty Name="idRarity" ColumnName="ID_RARITY" />
+          <ScalarProperty Name="idSet" ColumnName="ID_SET" />
+          <ScalarProperty Name="style" ColumnName="ITEM_STYLE" />
+          <ScalarProperty Name="price" ColumnName="ITEM_PRICE" />
+          <ScalarProperty Name="picture" ColumnName="ITEM_PICTURE" />
+          <ScalarProperty Name="dateRelease" ColumnName="ITEM_DATE_RELEASE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLAYERS">
+      <EntityTypeMapping TypeName="shop_in_gameModel.Player">
+        <MappingFragment StoreEntitySet="PLAYERS">
+          <ScalarProperty Name="id" ColumnName="ID_PLAYER" />
+          <ScalarProperty Name="nickName" ColumnName="NICKNAME" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="REGISTRATION_DATE" />
+          <ScalarProperty Name="MatchesPlayed" ColumnName="MATCHES_PLAYED" />
+          <ScalarProperty Name="MatchesWin" ColumnName="MATCHES_WIN" />
+          <ScalarProperty Name="commendation" ColumnName="COMMENDATION" />
+          <ScalarProperty Name="reports" ColumnName="REPORTS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RARITY_ITEM">
+      <EntityTypeMapping TypeName="shop_in_gameModel.RarityItem">
+        <MappingFragment StoreEntitySet="RARITY_ITEM">
+          <ScalarProperty Name="idRarity" ColumnName="ID_RARITY" />
+          <ScalarProperty Name="RarityType" ColumnName="RARITY_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALE">
+      <EntityTypeMapping TypeName="shop_in_gameModel.Sale">
+        <MappingFragment StoreEntitySet="SALE">
+          <ScalarProperty Name="id" ColumnName="ID_SALE" />
+          <ScalarProperty Name="idBuyer" ColumnName="ID_BUYER" />
+          <ScalarProperty Name="idItem" ColumnName="ID_ITEM" />
+          <ScalarProperty Name="NumberItems" ColumnName="NUMBER_ITEMS" />
+          <ScalarProperty Name="DataPurchase" ColumnName="DATA_PURCHASE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TYPE_ITEM">
+      <EntityTypeMapping TypeName="shop_in_gameModel.TypeItem">
+        <MappingFragment StoreEntitySet="TYPE_ITEM">
+          <ScalarProperty Name="idType" ColumnName="ID_TYPE" />
+          <ScalarProperty Name="NameType" ColumnName="NAME_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

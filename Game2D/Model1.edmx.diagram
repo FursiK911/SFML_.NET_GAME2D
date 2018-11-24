@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c9fd6dea7514a898cbc8cc0cc722039" Name="Diagram1">
+        <EntityTypeShape EntityType="shop_in_gameModel.ItemSets" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shop_in_gameModel.Items" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shop_in_gameModel.Player" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shop_in_gameModel.RarityItem" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shop_in_gameModel.Sale" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shop_in_gameModel.TypeItem" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="shop_in_gameModel.FK__ITEMS__ID_SET__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="shop_in_gameModel.FK__ITEMS__ID_RARITY__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="shop_in_gameModel.FK__ITEMS__ID_TYPE__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="shop_in_gameModel.FK__SALE__ID_ITEM__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="shop_in_gameModel.FK__SALE__ID_BUYER__21B6055D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

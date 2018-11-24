@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="shop_in_gameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ItemSets">
+    <Key>
+      <PropertyRef Name="idSet" />
+    </Key>
+    <Property Name="idSet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SetName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__ITEMS__ID_SET__1DE57479" FromRole="ITEM_SETS" ToRole="ITEMS" />
+  </EntityType>
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="idType" Type="Int32" Nullable="false" />
+    <Property Name="idRarity" Type="Int32" Nullable="false" />
+    <Property Name="idSet" Type="Int32" />
+    <Property Name="style" Type="Int32" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dateRelease" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="ItemSets" Relationship="Self.FK__ITEMS__ID_SET__1DE57479" FromRole="ITEMS" ToRole="ITEM_SETS" />
+    <NavigationProperty Name="RarityItem" Relationship="Self.FK__ITEMS__ID_RARITY__1CF15040" FromRole="ITEMS" ToRole="RARITY_ITEM" />
+    <NavigationProperty Name="TypeItem" Relationship="Self.FK__ITEMS__ID_TYPE__1BFD2C07" FromRole="ITEMS" ToRole="TYPE_ITEM" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK__SALE__ID_ITEM__22AA2996" FromRole="ITEMS" ToRole="SALE" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nickName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MatchesPlayed" Type="Int32" Nullable="false" />
+    <Property Name="MatchesWin" Type="Int32" Nullable="false" />
+    <Property Name="commendation" Type="Int32" Nullable="false" />
+    <Property Name="reports" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SALE" Relationship="Self.FK__SALE__ID_BUYER__21B6055D" FromRole="PLAYERS" ToRole="SALE" />
+  </EntityType>
+  <EntityType Name="RarityItem">
+    <Key>
+      <PropertyRef Name="idRarity" />
+    </Key>
+    <Property Name="idRarity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RarityType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__ITEMS__ID_RARITY__1CF15040" FromRole="RARITY_ITEM" ToRole="ITEMS" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idBuyer" Type="Int32" Nullable="false" />
+    <Property Name="idItem" Type="Int32" Nullable="false" />
+    <Property Name="NumberItems" Type="Int32" Nullable="false" />
+    <Property Name="DataPurchase" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__SALE__ID_ITEM__22AA2996" FromRole="SALE" ToRole="ITEMS" />
+    <NavigationProperty Name="Players" Relationship="Self.FK__SALE__ID_BUYER__21B6055D" FromRole="SALE" ToRole="PLAYERS" />
+  </EntityType>
+  <EntityType Name="TypeItem">
+    <Key>
+      <PropertyRef Name="idType" />
+    </Key>
+    <Property Name="idType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__ITEMS__ID_TYPE__1BFD2C07" FromRole="TYPE_ITEM" ToRole="ITEMS" />
+  </EntityType>
+  <Association Name="FK__ITEMS__ID_SET__1DE57479">
+    <End Role="ITEM_SETS" Type="shop_in_gameModel.ItemSets" Multiplicity="0..1" />
+    <End Role="ITEMS" Type="shop_in_gameModel.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITEM_SETS">
+        <PropertyRef Name="idSet" />
+      </Principal>
+      <Dependent Role="ITEMS">
+        <PropertyRef Name="idSet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ITEMS__ID_RARITY__1CF15040">
+    <End Role="RARITY_ITEM" Type="shop_in_gameModel.RarityItem" Multiplicity="1" />
+    <End Role="ITEMS" Type="shop_in_gameModel.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RARITY_ITEM">
+        <PropertyRef Name="idRarity" />
+      </Principal>
+      <Dependent Role="ITEMS">
+        <PropertyRef Name="idRarity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ITEMS__ID_TYPE__1BFD2C07">
+    <End Role="TYPE_ITEM" Type="shop_in_gameModel.TypeItem" Multiplicity="1" />
+    <End Role="ITEMS" Type="shop_in_gameModel.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPE_ITEM">
+        <PropertyRef Name="idType" />
+      </Principal>
+      <Dependent Role="ITEMS">
+        <PropertyRef Name="idType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SALE__ID_ITEM__22AA2996">
+    <End Role="ITEMS" Type="shop_in_gameModel.Items" Multiplicity="1" />
+    <End Role="SALE" Type="shop_in_gameModel.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITEMS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SALE">
+        <PropertyRef Name="idItem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SALE__ID_BUYER__21B6055D">
+    <End Role="PLAYERS" Type="shop_in_gameModel.Player" Multiplicity="1" />
+    <End Role="SALE" Type="shop_in_gameModel.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLAYERS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SALE">
+        <PropertyRef Name="idBuyer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="shop_in_gameContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ITEM_SETS" EntityType="shop_in_gameModel.ItemSets" />
+    <EntitySet Name="ITEMS" EntityType="shop_in_gameModel.Items" />
+    <EntitySet Name="PLAYERS" EntityType="shop_in_gameModel.Player" />
+    <EntitySet Name="RARITY_ITEM" EntityType="shop_in_gameModel.RarityItem" />
+    <EntitySet Name="SALE" EntityType="shop_in_gameModel.Sale" />
+    <EntitySet Name="TYPE_ITEM" EntityType="shop_in_gameModel.TypeItem" />
+    <AssociationSet Name="FK__ITEMS__ID_SET__1DE57479" Association="Self.FK__ITEMS__ID_SET__1DE57479">
+      <End Role="ITEM_SETS" EntitySet="ITEM_SETS" />
+      <End Role="ITEMS" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ITEMS__ID_RARITY__1CF15040" Association="Self.FK__ITEMS__ID_RARITY__1CF15040">
+      <End Role="RARITY_ITEM" EntitySet="RARITY_ITEM" />
+      <End Role="ITEMS" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ITEMS__ID_TYPE__1BFD2C07" Association="Self.FK__ITEMS__ID_TYPE__1BFD2C07">
+      <End Role="TYPE_ITEM" EntitySet="TYPE_ITEM" />
+      <End Role="ITEMS" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SALE__ID_ITEM__22AA2996" Association="Self.FK__SALE__ID_ITEM__22AA2996">
+      <End Role="ITEMS" EntitySet="ITEMS" />
+      <End Role="SALE" EntitySet="SALE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SALE__ID_BUYER__21B6055D" Association="Self.FK__SALE__ID_BUYER__21B6055D">
+      <End Role="PLAYERS" EntitySet="PLAYERS" />
+      <End Role="SALE" EntitySet="SALE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -14,13 +14,13 @@ namespace Magazin_for_game
     
     public partial class Sale
     {
-        public int id { get; set; }
-        public int idBuyer { get; set; }
-        public int idItem { get; set; }
+        public int Id { get; set; }
+        public int BuyerId { get; set; }
+        public int ItemId { get; set; }
         public int NumberItems { get; set; }
         public System.DateTime DataPurchase { get; set; }
     
         public virtual Items Items { get; set; }
-        public virtual Player Players { get; set; }
+        public virtual Players Players { get; set; }
     }
 }

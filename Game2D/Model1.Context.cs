@@ -25,11 +25,14 @@ namespace Magazin_for_game
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ItemSets> ItemSets { get; set; }
         public virtual DbSet<Items> Items { get; set; }
-        public virtual DbSet<Player> Players { get; set; }
-        public virtual DbSet<RarityItem> RarityItems { get; set; }
-        public virtual DbSet<Sale> Sales { get; set; }
-        public virtual DbSet<TypeItem> TypeItems { get; set; }
+        public virtual DbSet<ItemSets> ItemSets { get; set; }
+        public virtual DbSet<Players> Players { get; set; }
+        public virtual DbSet<RarityItems> RarityItems { get; set; }
+        public virtual DbSet<Sale> Sale { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TypeItems> TypeItems { get; set; }
+        public virtual DbSet<UsedItemSets> UsedItemSets { get; set; }
+        public virtual DbSet<Inventory> Inventory { get; set; }
     }
 }

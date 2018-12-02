@@ -20,7 +20,7 @@ namespace Magazin_for_game
             this.Items = new HashSet<Items>();
         }
     
-        public int idSet { get; set; }
+        public int Id { get; set; }
         public string SetName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

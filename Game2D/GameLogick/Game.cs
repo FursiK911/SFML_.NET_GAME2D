@@ -1,4 +1,4 @@
-﻿using Magazin_for_game.GameLogick.Main_Menu;
+﻿using Magazin_for_game.GameLogick.Interface;
 using SFML.Graphics;
 using SFML.Window;
 using System;
@@ -15,17 +15,23 @@ namespace Magazin_for_game.GameLogick
             AUTHORIZATION = 0,
             MENU = 1,
             SHOP = 2,
-            GAME = 3,
+            STATISTICS = 3,
+            GAME = 4,
         }
 
         public static GameStatus gs = GameStatus.MENU;
+
         World world;
         MainMenu menu;
+        Shop shop;
+        Statistics statistics;
 
         public Game()
         {
             world = new World();
             menu = new MainMenu();
+            shop = new Shop();
+            statistics = new Statistics();
         }
 
         public void Update()
@@ -40,6 +46,10 @@ namespace Magazin_for_game.GameLogick
                     menu.Update();
                     break;
                 case GameStatus.SHOP:
+                    shop.Update();
+                    break;
+                case GameStatus.STATISTICS:
+                    statistics.Update();
                     break;
             }           
         }
@@ -57,6 +67,10 @@ namespace Magazin_for_game.GameLogick
                     Program.Window.Draw(menu);
                     break;
                 case GameStatus.SHOP:
+                    Program.Window.Draw(shop);
+                    break;
+                case GameStatus.STATISTICS:
+                    Program.Window.Draw(statistics);
                     break;
             }
         }

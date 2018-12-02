@@ -5,17 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4c9fd6dea7514a898cbc8cc0cc722039" Name="Diagram1">
-        <EntityTypeShape EntityType="shop_in_gameModel.ItemSets" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="shop_in_gameModel.Items" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="shop_in_gameModel.Player" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="shop_in_gameModel.RarityItem" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="shop_in_gameModel.Sale" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="shop_in_gameModel.TypeItem" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="shop_in_gameModel.FK__ITEMS__ID_SET__1DE57479" ManuallyRouted="false" />
-        <AssociationConnector Association="shop_in_gameModel.FK__ITEMS__ID_RARITY__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="shop_in_gameModel.FK__ITEMS__ID_TYPE__1BFD2C07" ManuallyRouted="false" />
-        <AssociationConnector Association="shop_in_gameModel.FK__SALE__ID_ITEM__22AA2996" ManuallyRouted="false" />
-        <AssociationConnector Association="shop_in_gameModel.FK__SALE__ID_BUYER__21B6055D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="shop_in_gameModel.Items" Width="1.5" PointX="3" PointY="2.625" />
+        <EntityTypeShape EntityType="shop_in_gameModel.ItemSets" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="shop_in_gameModel.Players" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="shop_in_gameModel.RarityItems" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="shop_in_gameModel.Sale" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="shop_in_gameModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.5" />
+        <EntityTypeShape EntityType="shop_in_gameModel.TypeItems" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="shop_in_gameModel.UsedItemSets" Width="1.5" PointX="8.25" PointY="3.5" />
+        <AssociationConnector Association="shop_in_gameModel.FK__Items__RarityId__30F848ED" />
+        <AssociationConnector Association="shop_in_gameModel.FK__Items__SetId__31EC6D26" />
+        <AssociationConnector Association="shop_in_gameModel.FK__Items__TypeId__300424B4" />
+        <AssociationConnector Association="shop_in_gameModel.FK__Sale__ItemId__36B12243" />
+        <AssociationConnector Association="shop_in_gameModel.FK__UsedItemS__BodyI__3C69FB99" />
+        <AssociationConnector Association="shop_in_gameModel.FK__UsedItemS__HeadI__3B75D760" />
+        <AssociationConnector Association="shop_in_gameModel.FK__UsedItemS__LegId__3D5E1FD2" />
+        <AssociationConnector Association="shop_in_gameModel.FK__Sale__BuyerId__35BCFE0A" />
+        <AssociationConnector Association="shop_in_gameModel.FK__UsedItemS__Playe__3A81B327" />
+        <EntityTypeShape EntityType="shop_in_gameModel.Inventory" Width="1.5" PointX="8.25" PointY="7.125" />
+        <AssociationConnector Association="shop_in_gameModel.FK__Inventory__Items__4AB81AF0" />
+        <AssociationConnector Association="shop_in_gameModel.FK__Inventory__Playe__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

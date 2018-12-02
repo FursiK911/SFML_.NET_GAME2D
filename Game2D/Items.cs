@@ -18,23 +18,34 @@ namespace Magazin_for_game
         public Items()
         {
             this.Sale = new HashSet<Sale>();
+            this.UsedItemSets = new HashSet<UsedItemSets>();
+            this.UsedItemSets1 = new HashSet<UsedItemSets>();
+            this.UsedItemSets2 = new HashSet<UsedItemSets>();
+            this.Inventory = new HashSet<Inventory>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public int idType { get; set; }
-        public int idRarity { get; set; }
-        public Nullable<int> idSet { get; set; }
-        public Nullable<int> style { get; set; }
-        public int price { get; set; }
-        public string picture { get; set; }
-        public System.DateTime dateRelease { get; set; }
+        public int Id { get; set; }
+        public string ItemName { get; set; }
+        public string ItemDescription { get; set; }
+        public int TypeId { get; set; }
+        public int RarityId { get; set; }
+        public Nullable<int> SetId { get; set; }
+        public int ItemPrice { get; set; }
+        public string ItemPicture { get; set; }
+        public System.DateTime ItemDataRelease { get; set; }
     
+        public virtual RarityItems RarityItems { get; set; }
         public virtual ItemSets ItemSets { get; set; }
-        public virtual RarityItem RarityItem { get; set; }
-        public virtual TypeItem TypeItem { get; set; }
+        public virtual TypeItems TypeItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sale { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsedItemSets> UsedItemSets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsedItemSets> UsedItemSets1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsedItemSets> UsedItemSets2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }

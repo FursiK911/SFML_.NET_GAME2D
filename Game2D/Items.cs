@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Magazin_for_game
+namespace Game2D
 {
     using System;
     using System.Collections.Generic;
@@ -18,10 +18,6 @@ namespace Magazin_for_game
         public Items()
         {
             this.Sale = new HashSet<Sale>();
-            this.UsedItemSets = new HashSet<UsedItemSets>();
-            this.UsedItemSets1 = new HashSet<UsedItemSets>();
-            this.UsedItemSets2 = new HashSet<UsedItemSets>();
-            this.Inventory = new HashSet<Inventory>();
         }
     
         public int Id { get; set; }
@@ -31,7 +27,6 @@ namespace Magazin_for_game
         public int RarityId { get; set; }
         public Nullable<int> SetId { get; set; }
         public int ItemPrice { get; set; }
-        public string ItemPicture { get; set; }
         public System.DateTime ItemDataRelease { get; set; }
     
         public virtual RarityItems RarityItems { get; set; }
@@ -39,13 +34,5 @@ namespace Magazin_for_game
         public virtual TypeItems TypeItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sale { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsedItemSets> UsedItemSets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsedItemSets> UsedItemSets1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsedItemSets> UsedItemSets2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }

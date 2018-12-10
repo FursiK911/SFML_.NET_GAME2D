@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Magazin_for_game.GameLogick.Interface
+namespace Game2D.GameLogick.Interface
 {
 
     class MainMenu : Transformable, Drawable
     {
-        RectangleShape rectShape;
+        private RectangleShape _rectShape;
 
-        AnimationSprite dispels;
+        private AnimationSprite _burn;
 
         public Text findGameText { get; set; }
         public Text shopText { get; set; }
@@ -29,8 +29,8 @@ namespace Magazin_for_game.GameLogick.Interface
 
         public MainMenu()
         {
-            rectShape = new RectangleShape(new SFML.System.Vector2f(1024, 768));
-            rectShape.Texture = Content.mainMenuBackground;
+            _rectShape = new RectangleShape(new SFML.System.Vector2f(1024, 768));
+            _rectShape.Texture = Content.mainMenuBackground;
 
             CreateSmoke();
             CreateMenu();
@@ -38,8 +38,8 @@ namespace Magazin_for_game.GameLogick.Interface
 
         void Drawable.Draw(RenderTarget target, RenderStates states)
         {
-            target.Draw(rectShape, states);
-            target.Draw(dispels, states);
+            target.Draw(_rectShape, states);
+            target.Draw(_burn, states);
             target.Draw(findGameText);
             target.Draw(shopText);
             target.Draw(statisticText);
@@ -77,10 +77,10 @@ namespace Magazin_for_game.GameLogick.Interface
 
         private void CreateSmoke()
         {
-            dispels = new AnimationSprite(Content.smoke, new SpriteSheet(5, 14, 0, 2000, 5600));
-            dispels.Position = new Vector2f(-200, -200);
+            _burn = new AnimationSprite(Content.smoke, new SpriteSheet(5, 14, 0, 2000, 5600));
+            _burn.Position = new Vector2f(-200, -200);
 
-            dispels.AddAnimation("dispel", new Animation(AddFrames(5, 12, 0.2f)));
+            _burn.AddAnimation("dispel", new Animation(AddFrames(5, 12, 0.2f)));
             //dispels.AddAnimation("dispel", new Animation(
             //    new AnimationFrame(0, 0, 0.3f),
             //    new AnimationFrame(1, 0, 0.3f),
@@ -191,7 +191,7 @@ namespace Magazin_for_game.GameLogick.Interface
             else if (Mouse.GetPosition(Program.Window).X > shopText.Position.X && Mouse.GetPosition(Program.Window).X < shopText.Position.X + 110 &&
                 Mouse.GetPosition(Program.Window).Y > shopText.Position.Y && Mouse.GetPosition(Program.Window).Y < shopText.Position.Y + 50) // При наведении на Shop
             {
-                dispels.Position = new Vector2f(initialPositionX + 60, initialPositionY + indent);
+                _burn.Position = new Vector2f(initialPositionX + 60, initialPositionY + indent);
                 shopText.Color = Color.Black;
             }
                  
@@ -199,7 +199,7 @@ namespace Magazin_for_game.GameLogick.Interface
             else if (Mouse.GetPosition(Program.Window).X > statisticText.Position.X && Mouse.GetPosition(Program.Window).X < statisticText.Position.X + 230 &&
                     Mouse.GetPosition(Program.Window).Y > statisticText.Position.Y && Mouse.GetPosition(Program.Window).Y < statisticText.Position.Y + 50) // При наведении на Statistics
             {
-                dispels.Position = new Vector2f(initialPositionX + 120, initialPositionY + (indent * 2));
+                _burn.Position = new Vector2f(initialPositionX + 120, initialPositionY + (indent * 2));
                 statisticText.Color = Color.Black;
             }
                 
@@ -207,12 +207,12 @@ namespace Magazin_for_game.GameLogick.Interface
             else if (Mouse.GetPosition(Program.Window).X > exitText.Position.X && Mouse.GetPosition(Program.Window).X < exitText.Position.X + 100 &&
                     Mouse.GetPosition(Program.Window).Y > exitText.Position.Y && Mouse.GetPosition(Program.Window).Y < exitText.Position.Y + 50) // При наведении на Exit
             {
-                dispels.Position = new Vector2f(initialPositionX + 50, initialPositionY + (indent * 3));
+                _burn.Position = new Vector2f(initialPositionX + 50, initialPositionY + (indent * 3));
                 exitText.Color = Color.Black;
             }
             else
             {
-                dispels.Position = new Vector2f(-200, -200);
+                _burn.Position = new Vector2f(-200, -200);
                 //findGameText.Color = Color.White;
                 shopText.Color = Color.White;
                 statisticText.Color = Color.White;

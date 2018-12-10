@@ -1,4 +1,4 @@
-﻿namespace Magazin_for_game
+﻿namespace Game2D
 {
     partial class AuthorizationForm
     {
@@ -95,6 +95,7 @@
             // linkLabel_registration
             // 
             this.linkLabel_registration.AutoSize = true;
+            this.linkLabel_registration.LinkColor = System.Drawing.Color.Black;
             this.linkLabel_registration.Location = new System.Drawing.Point(269, 71);
             this.linkLabel_registration.Name = "linkLabel_registration";
             this.linkLabel_registration.Size = new System.Drawing.Size(91, 13);
@@ -116,7 +117,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 193);
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ClientSize = new System.Drawing.Size(372, 197);
             this.Controls.Add(this.button_registration);
             this.Controls.Add(this.linkLabel_registration);
             this.Controls.Add(this.button_cancel);

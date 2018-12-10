@@ -4,11 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Magazin_for_game
+namespace Game2D
 {
     public partial class AuthorizationForm : Form
     {
@@ -29,7 +30,7 @@ namespace Magazin_for_game
             var players = GetPlayersEf();
             foreach (var player in players)
             {
-                if (player.Nickname == textBox_login.Text && player.PasswordPlayer == textBox_password.Text)
+                if (player.Nickname == textBox_login.Text && player.PasswordPlayer == GetHashString(textBox_password.Text))
                 {
                     this.DialogResult = DialogResult.OK;
                     Program.selectedPlayer = player;
@@ -54,6 +55,27 @@ namespace Magazin_for_game
 
             return playersList;
 
+        }
+
+        private string GetHashString(string s)
+        {
+            //переводим строку в байт-массим
+            byte[] bytes = Encoding.Unicode.GetBytes(s);
+
+            //создаем объект для получения средст шифрования
+            MD5CryptoServiceProvider CSP =
+                new MD5CryptoServiceProvider();
+
+            //вычисляем хеш-представление в байтах
+            byte[] byteHash = CSP.ComputeHash(bytes);
+
+            string hash = string.Empty;
+
+            //формируем одну цельную строку из массива
+            foreach (byte b in byteHash)
+                hash += string.Format("{0:x2}", b);
+
+            return hash;
         }
     }
 }

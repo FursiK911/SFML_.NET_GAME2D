@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Magazin_for_game
+namespace Game2D
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using Magazin_for_game.GameLogick.Interface;
+﻿using Game2D.GameLogick.Interface;
 using SFML.Graphics;
 using SFML.Window;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Magazin_for_game.GameLogick
+namespace Game2D.GameLogick
 {
     class Game
     {
@@ -21,10 +21,10 @@ namespace Magazin_for_game.GameLogick
 
         public static GameStatus gs = GameStatus.MENU;
 
-        World world;
-        MainMenu menu;
-        Shop shop;
-        Statistics statistics;
+        private World world { get; set; }
+        private MainMenu menu { get; set; }
+        private Shop shop { get; set; }
+        private Statistics statistics { get; set; }
 
         public Game()
         {

@@ -1,4 +1,4 @@
-﻿namespace Magazin_for_game
+﻿namespace Game2D
 {
     partial class RegistrationForm
     {
@@ -36,6 +36,8 @@
             this.label_email = new System.Windows.Forms.Label();
             this.button_registration = new System.Windows.Forms.Button();
             this.button_cancel = new System.Windows.Forms.Button();
+            this.textBox_tryPassword = new System.Windows.Forms.TextBox();
+            this.label_TryPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_login
@@ -58,8 +60,10 @@
             // 
             this.textBox_password.Location = new System.Drawing.Point(12, 92);
             this.textBox_password.Name = "textBox_password";
+            this.textBox_password.PasswordChar = '*';
             this.textBox_password.Size = new System.Drawing.Size(387, 20);
             this.textBox_password.TabIndex = 3;
+            this.textBox_password.UseSystemPasswordChar = true;
             // 
             // label_password
             // 
@@ -72,7 +76,7 @@
             // 
             // textBox_email
             // 
-            this.textBox_email.Location = new System.Drawing.Point(12, 143);
+            this.textBox_email.Location = new System.Drawing.Point(12, 207);
             this.textBox_email.Name = "textBox_email";
             this.textBox_email.Size = new System.Drawing.Size(387, 20);
             this.textBox_email.TabIndex = 5;
@@ -80,7 +84,7 @@
             // label_email
             // 
             this.label_email.AutoSize = true;
-            this.label_email.Location = new System.Drawing.Point(9, 127);
+            this.label_email.Location = new System.Drawing.Point(9, 191);
             this.label_email.Name = "label_email";
             this.label_email.Size = new System.Drawing.Size(32, 13);
             this.label_email.TabIndex = 4;
@@ -88,7 +92,7 @@
             // 
             // button_registration
             // 
-            this.button_registration.Location = new System.Drawing.Point(12, 179);
+            this.button_registration.Location = new System.Drawing.Point(12, 266);
             this.button_registration.Name = "button_registration";
             this.button_registration.Size = new System.Drawing.Size(109, 41);
             this.button_registration.TabIndex = 6;
@@ -98,7 +102,7 @@
             // 
             // button_cancel
             // 
-            this.button_cancel.Location = new System.Drawing.Point(289, 179);
+            this.button_cancel.Location = new System.Drawing.Point(289, 266);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(110, 41);
             this.button_cancel.TabIndex = 7;
@@ -106,11 +110,32 @@
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
+            // textBox_tryPassword
+            // 
+            this.textBox_tryPassword.Location = new System.Drawing.Point(12, 153);
+            this.textBox_tryPassword.Name = "textBox_tryPassword";
+            this.textBox_tryPassword.PasswordChar = '*';
+            this.textBox_tryPassword.Size = new System.Drawing.Size(387, 20);
+            this.textBox_tryPassword.TabIndex = 9;
+            this.textBox_tryPassword.UseSystemPasswordChar = true;
+            // 
+            // label_TryPassword
+            // 
+            this.label_TryPassword.AutoSize = true;
+            this.label_TryPassword.Location = new System.Drawing.Point(9, 137);
+            this.label_TryPassword.Name = "label_TryPassword";
+            this.label_TryPassword.Size = new System.Drawing.Size(100, 13);
+            this.label_TryPassword.TabIndex = 8;
+            this.label_TryPassword.Text = "Повторите пароль";
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 232);
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ClientSize = new System.Drawing.Size(411, 319);
+            this.Controls.Add(this.textBox_tryPassword);
+            this.Controls.Add(this.label_TryPassword);
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button_registration);
             this.Controls.Add(this.textBox_email);
@@ -119,7 +144,7 @@
             this.Controls.Add(this.label_password);
             this.Controls.Add(this.textBox_login);
             this.Controls.Add(this.label_login);
-            this.MaximumSize = new System.Drawing.Size(427, 270);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimumSize = new System.Drawing.Size(427, 270);
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -139,5 +164,7 @@
         private System.Windows.Forms.Label label_email;
         private System.Windows.Forms.Button button_registration;
         private System.Windows.Forms.Button button_cancel;
+        private System.Windows.Forms.TextBox textBox_tryPassword;
+        private System.Windows.Forms.Label label_TryPassword;
     }
 }

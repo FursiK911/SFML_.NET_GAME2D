@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
-namespace Magazin_for_game
+namespace Game2D
 {
     public partial class RegistrationForm : Form
     {
@@ -39,12 +40,18 @@ namespace Magazin_for_game
                         MessageBox.Show("Пользователь с такой электронной почтой уже существует!");
                         return;
                     }
+                    else if (textBox_password.Text != textBox_tryPassword.Text)
+                    {
+                        MessageBox.Show("Введенные пароли не совпадают!");
+                        return;
+                    }
                 }
                 var context = new shop_in_gameContext();
                 Players p = context.Players.Add(new Players
                 {
                     Nickname = textBox_login.Text,
-                    PasswordPlayer = textBox_password.Text,
+                    PasswordPlayer = GetHashString(textBox_password.Text),
+                    Budget = 2000,
                     Email = textBox_email.Text,
                     MathesPlayed = 0,
                     MathesWin = 0,
@@ -87,6 +94,27 @@ namespace Magazin_for_game
 
             return playersList;
 
+        }
+
+        private string GetHashString(string s)
+        {
+            //переводим строку в байт-массим
+            byte[] bytes = Encoding.Unicode.GetBytes(s);
+
+            //создаем объект для получения средст шифрования
+            MD5CryptoServiceProvider CSP =
+                new MD5CryptoServiceProvider();
+
+            //вычисляем хеш-представление в байтах
+            byte[] byteHash = CSP.ComputeHash(bytes);
+
+            string hash = string.Empty;
+
+            //формируем одну цельную строку из массива
+            foreach (byte b in byteHash)
+                hash += string.Format("{0:x2}", b);
+
+            return hash;
         }
     }
 }

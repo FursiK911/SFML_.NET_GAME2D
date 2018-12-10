@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Magazin_for_game
+namespace Game2D
 {
     using System;
     using System.Data.Entity;
@@ -32,7 +32,5 @@ namespace Magazin_for_game
         public virtual DbSet<Sale> Sale { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeItems> TypeItems { get; set; }
-        public virtual DbSet<UsedItemSets> UsedItemSets { get; set; }
-        public virtual DbSet<Inventory> Inventory { get; set; }
     }
 }

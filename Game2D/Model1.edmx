@@ -5,14 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище shop_in_gameModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Inventory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PlayerId" Type="int" Nullable="false" />
-          <Property Name="ItemsId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="Id" />
@@ -39,7 +31,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nickname" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PasswordPlayer" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Budget" Type="int" Nullable="false" />
           <Property Name="RegistrationDate" Type="date" Nullable="false" />
           <Property Name="MathesPlayed" Type="int" Nullable="false" />
@@ -47,6 +38,7 @@
           <Property Name="Commendation" Type="int" Nullable="false" />
           <Property Name="Reports" Type="int" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordPlayer" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="RarityItems">
           <Key>
@@ -82,44 +74,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameType" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "shop_in_game.dbo.UsedItemSets" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="UsedItemSets">
-          <Key>
-            <PropertyRef Name="PlayerId" />
-            <PropertyRef Name="HeadId" />
-            <PropertyRef Name="BodyId" />
-            <PropertyRef Name="LegId" />
-          </Key>
-          <Property Name="PlayerId" Type="int" Nullable="false" />
-          <Property Name="HeadId" Type="int" Nullable="false" />
-          <Property Name="BodyId" Type="int" Nullable="false" />
-          <Property Name="LegId" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__Inventory__Items__4AB81AF0">
-          <End Role="Items" Type="Self.Items" Multiplicity="1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="ItemsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__Playe__49C3F6B7">
-          <End Role="Players" Type="Self.Players" Multiplicity="1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Players">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="PlayerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Items__RarityId__30F848ED">
           <End Role="RarityItems" Type="Self.RarityItems" Multiplicity="1" />
           <End Role="Items" Type="Self.Items" Multiplicity="*" />
@@ -180,56 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsedItemS__BodyI__3C69FB99">
-          <End Role="Items" Type="Self.Items" Multiplicity="1" />
-          <End Role="UsedItemSets" Type="Self.UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="BodyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsedItemS__HeadI__3B75D760">
-          <End Role="Items" Type="Self.Items" Multiplicity="1" />
-          <End Role="UsedItemSets" Type="Self.UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="HeadId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsedItemS__LegId__3D5E1FD2">
-          <End Role="Items" Type="Self.Items" Multiplicity="1" />
-          <End Role="UsedItemSets" Type="Self.UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="LegId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsedItemS__Playe__3A81B327">
-          <End Role="Players" Type="Self.Players" Multiplicity="1" />
-          <End Role="UsedItemSets" Type="Self.UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Players">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="PlayerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище shop_in_gameModelContainer">
-          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemSets" EntityType="Self.ItemSets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
@@ -237,22 +142,6 @@
           <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeItems" EntityType="Self.TypeItems" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsedItemSets" EntityType="Self.UsedItemSets" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UsedItemSets].[PlayerId] AS [PlayerId], 
-    [UsedItemSets].[HeadId] AS [HeadId], 
-    [UsedItemSets].[BodyId] AS [BodyId], 
-    [UsedItemSets].[LegId] AS [LegId]
-    FROM [dbo].[UsedItemSets] AS [UsedItemSets]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__Inventory__Items__4AB81AF0" Association="Self.FK__Inventory__Items__4AB81AF0">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="Inventory" EntitySet="Inventory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__Playe__49C3F6B7" Association="Self.FK__Inventory__Playe__49C3F6B7">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="Inventory" EntitySet="Inventory" />
-          </AssociationSet>
           <AssociationSet Name="FK__Items__RarityId__30F848ED" Association="Self.FK__Items__RarityId__30F848ED">
             <End Role="RarityItems" EntitySet="RarityItems" />
             <End Role="Items" EntitySet="Items" />
@@ -273,22 +162,6 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__BodyI__3C69FB99" Association="Self.FK__UsedItemS__BodyI__3C69FB99">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__HeadI__3B75D760" Association="Self.FK__UsedItemS__HeadI__3B75D760">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__LegId__3D5E1FD2" Association="Self.FK__UsedItemS__LegId__3D5E1FD2">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__Playe__3A81B327" Association="Self.FK__UsedItemS__Playe__3A81B327">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -302,7 +175,6 @@
           <EntitySet Name="Sale" EntityType="shop_in_gameModel.Sale" />
           <EntitySet Name="sysdiagrams" EntityType="shop_in_gameModel.sysdiagrams" />
           <EntitySet Name="TypeItems" EntityType="shop_in_gameModel.TypeItems" />
-          <EntitySet Name="UsedItemSets" EntityType="shop_in_gameModel.UsedItemSets" />
           <AssociationSet Name="FK__Items__RarityId__30F848ED" Association="shop_in_gameModel.FK__Items__RarityId__30F848ED">
             <End Role="RarityItems" EntitySet="RarityItems" />
             <End Role="Items" EntitySet="Items" />
@@ -319,34 +191,9 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__BodyI__3C69FB99" Association="shop_in_gameModel.FK__UsedItemS__BodyI__3C69FB99">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__HeadI__3B75D760" Association="shop_in_gameModel.FK__UsedItemS__HeadI__3B75D760">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__LegId__3D5E1FD2" Association="shop_in_gameModel.FK__UsedItemS__LegId__3D5E1FD2">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
           <AssociationSet Name="FK__Sale__BuyerId__35BCFE0A" Association="shop_in_gameModel.FK__Sale__BuyerId__35BCFE0A">
             <End Role="Players" EntitySet="Players" />
             <End Role="Sale" EntitySet="Sale" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsedItemS__Playe__3A81B327" Association="shop_in_gameModel.FK__UsedItemS__Playe__3A81B327">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="UsedItemSets" EntitySet="UsedItemSets" />
-          </AssociationSet>
-          <EntitySet Name="Inventory" EntityType="shop_in_gameModel.Inventory" />
-          <AssociationSet Name="FK__Inventory__Items__4AB81AF0" Association="shop_in_gameModel.FK__Inventory__Items__4AB81AF0">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="Inventory" EntitySet="Inventory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__Playe__49C3F6B7" Association="shop_in_gameModel.FK__Inventory__Playe__49C3F6B7">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Items">
@@ -360,16 +207,11 @@
           <Property Name="RarityId" Type="Int32" Nullable="false" />
           <Property Name="SetId" Type="Int32" />
           <Property Name="ItemPrice" Type="Int32" Nullable="false" />
-          <Property Name="ItemPicture" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ItemDataRelease" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="RarityItems" Relationship="shop_in_gameModel.FK__Items__RarityId__30F848ED" FromRole="Items" ToRole="RarityItems" />
           <NavigationProperty Name="ItemSets" Relationship="shop_in_gameModel.FK__Items__SetId__31EC6D26" FromRole="Items" ToRole="ItemSets" />
           <NavigationProperty Name="TypeItems" Relationship="shop_in_gameModel.FK__Items__TypeId__300424B4" FromRole="Items" ToRole="TypeItems" />
           <NavigationProperty Name="Sale" Relationship="shop_in_gameModel.FK__Sale__ItemId__36B12243" FromRole="Items" ToRole="Sale" />
-          <NavigationProperty Name="UsedItemSets" Relationship="shop_in_gameModel.FK__UsedItemS__BodyI__3C69FB99" FromRole="Items" ToRole="UsedItemSets" />
-          <NavigationProperty Name="UsedItemSets1" Relationship="shop_in_gameModel.FK__UsedItemS__HeadI__3B75D760" FromRole="Items" ToRole="UsedItemSets" />
-          <NavigationProperty Name="UsedItemSets2" Relationship="shop_in_gameModel.FK__UsedItemS__LegId__3D5E1FD2" FromRole="Items" ToRole="UsedItemSets" />
-          <NavigationProperty Name="Inventory" Relationship="shop_in_gameModel.FK__Inventory__Items__4AB81AF0" FromRole="Items" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="ItemSets">
           <Key>
@@ -385,17 +227,15 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nickname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordPlayer" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Budget" Type="Int32" Nullable="false" />
           <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MathesPlayed" Type="Int32" Nullable="false" />
           <Property Name="MathesWin" Type="Int32" Nullable="false" />
           <Property Name="Commendation" Type="Int32" Nullable="false" />
           <Property Name="Reports" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Sale" Relationship="shop_in_gameModel.FK__Sale__BuyerId__35BCFE0A" FromRole="Players" ToRole="Sale" />
-          <NavigationProperty Name="UsedItemSets" Relationship="shop_in_gameModel.FK__UsedItemS__Playe__3A81B327" FromRole="Players" ToRole="UsedItemSets" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Inventory" Relationship="shop_in_gameModel.FK__Inventory__Playe__49C3F6B7" FromRole="Players" ToRole="Inventory" />
+          <Property Name="PasswordPlayer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sale" Relationship="shop_in_gameModel.FK__Sale__BuyerId__35BCFE0A" FromRole="Players" ToRole="Sale" />
         </EntityType>
         <EntityType Name="RarityItems">
           <Key>
@@ -434,22 +274,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="shop_in_gameModel.FK__Items__TypeId__300424B4" FromRole="TypeItems" ToRole="Items" />
-        </EntityType>
-        <EntityType Name="UsedItemSets">
-          <Key>
-            <PropertyRef Name="PlayerId" />
-            <PropertyRef Name="HeadId" />
-            <PropertyRef Name="BodyId" />
-            <PropertyRef Name="LegId" />
-          </Key>
-          <Property Name="PlayerId" Type="Int32" Nullable="false" />
-          <Property Name="HeadId" Type="Int32" Nullable="false" />
-          <Property Name="BodyId" Type="Int32" Nullable="false" />
-          <Property Name="LegId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Items" Relationship="shop_in_gameModel.FK__UsedItemS__BodyI__3C69FB99" FromRole="UsedItemSets" ToRole="Items" />
-          <NavigationProperty Name="Items1" Relationship="shop_in_gameModel.FK__UsedItemS__HeadI__3B75D760" FromRole="UsedItemSets" ToRole="Items" />
-          <NavigationProperty Name="Items2" Relationship="shop_in_gameModel.FK__UsedItemS__LegId__3D5E1FD2" FromRole="UsedItemSets" ToRole="Items" />
-          <NavigationProperty Name="Players" Relationship="shop_in_gameModel.FK__UsedItemS__Playe__3A81B327" FromRole="UsedItemSets" ToRole="Players" />
         </EntityType>
         <Association Name="FK__Items__RarityId__30F848ED">
           <End Type="shop_in_gameModel.RarityItems" Role="RarityItems" Multiplicity="1" />
@@ -499,42 +323,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsedItemS__BodyI__3C69FB99">
-          <End Type="shop_in_gameModel.Items" Role="Items" Multiplicity="1" />
-          <End Type="shop_in_gameModel.UsedItemSets" Role="UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="BodyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsedItemS__HeadI__3B75D760">
-          <End Type="shop_in_gameModel.Items" Role="Items" Multiplicity="1" />
-          <End Type="shop_in_gameModel.UsedItemSets" Role="UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="HeadId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UsedItemS__LegId__3D5E1FD2">
-          <End Type="shop_in_gameModel.Items" Role="Items" Multiplicity="1" />
-          <End Type="shop_in_gameModel.UsedItemSets" Role="UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="LegId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Sale__BuyerId__35BCFE0A">
           <End Type="shop_in_gameModel.Players" Role="Players" Multiplicity="1" />
           <End Type="shop_in_gameModel.Sale" Role="Sale" Multiplicity="*" />
@@ -547,53 +335,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsedItemS__Playe__3A81B327">
-          <End Type="shop_in_gameModel.Players" Role="Players" Multiplicity="1" />
-          <End Type="shop_in_gameModel.UsedItemSets" Role="UsedItemSets" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Players">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsedItemSets">
-              <PropertyRef Name="PlayerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Inventory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlayerId" Type="Int32" Nullable="false" />
-          <Property Name="ItemsId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Items" Relationship="shop_in_gameModel.FK__Inventory__Items__4AB81AF0" FromRole="Inventory" ToRole="Items" />
-          <NavigationProperty Name="Players" Relationship="shop_in_gameModel.FK__Inventory__Playe__49C3F6B7" FromRole="Inventory" ToRole="Players" />
-        </EntityType>
-        <Association Name="FK__Inventory__Items__4AB81AF0">
-          <End Type="shop_in_gameModel.Items" Role="Items" Multiplicity="1" />
-          <End Type="shop_in_gameModel.Inventory" Role="Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="ItemsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__Playe__49C3F6B7">
-          <End Type="shop_in_gameModel.Players" Role="Players" Multiplicity="1" />
-          <End Type="shop_in_gameModel.Inventory" Role="Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Players">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="PlayerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -624,6 +366,7 @@
           <EntitySetMapping Name="Players">
             <EntityTypeMapping TypeName="shop_in_gameModel.Players">
               <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="PasswordPlayer" ColumnName="PasswordPlayer" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Reports" ColumnName="Reports" />
                 <ScalarProperty Name="Commendation" ColumnName="Commendation" />
@@ -631,7 +374,6 @@
                 <ScalarProperty Name="MathesPlayed" ColumnName="MathesPlayed" />
                 <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
                 <ScalarProperty Name="Budget" ColumnName="Budget" />
-                <ScalarProperty Name="PasswordPlayer" ColumnName="PasswordPlayer" />
                 <ScalarProperty Name="Nickname" ColumnName="Nickname" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -671,25 +413,6 @@
             <EntityTypeMapping TypeName="shop_in_gameModel.TypeItems">
               <MappingFragment StoreEntitySet="TypeItems">
                 <ScalarProperty Name="NameType" ColumnName="NameType" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsedItemSets">
-            <EntityTypeMapping TypeName="shop_in_gameModel.UsedItemSets">
-              <MappingFragment StoreEntitySet="UsedItemSets">
-                <ScalarProperty Name="LegId" ColumnName="LegId" />
-                <ScalarProperty Name="BodyId" ColumnName="BodyId" />
-                <ScalarProperty Name="HeadId" ColumnName="HeadId" />
-                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Inventory">
-            <EntityTypeMapping TypeName="shop_in_gameModel.Inventory">
-              <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="ItemsId" ColumnName="ItemsId" />
-                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

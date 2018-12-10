@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Magazin_for_game.GameLogick
+namespace Game2D.GameLogick
 {
     class World : Transformable, Drawable
     {

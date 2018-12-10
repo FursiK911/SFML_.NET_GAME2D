@@ -6,12 +6,12 @@ using SFML.System;
 using SFML.Graphics;
 using System.Collections.Generic;
 using System.Linq;
-using Magazin_for_game.GameLogick;
+using Game2D.GameLogick;
 using System.Windows;
 using System.Windows.Forms;
 using View = SFML.Graphics.View;
 
-namespace Magazin_for_game
+namespace Game2D
 {
     class Program
     {

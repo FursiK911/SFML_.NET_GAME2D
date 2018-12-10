@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Magazin_for_game.GameLogick.Interface
+namespace Game2D.GameLogick.Interface
 {
     class Statistics : Transformable, Drawable
     {

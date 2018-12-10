@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Magazin_for_game
+namespace Game2D
 {
     using System;
     using System.Collections.Generic;
@@ -18,13 +18,10 @@ namespace Magazin_for_game
         public Players()
         {
             this.Sale = new HashSet<Sale>();
-            this.UsedItemSets = new HashSet<UsedItemSets>();
-            this.Inventory = new HashSet<Inventory>();
         }
     
         public int Id { get; set; }
         public string Nickname { get; set; }
-        public string PasswordPlayer { get; set; }
         public int Budget { get; set; }
         public System.DateTime RegistrationDate { get; set; }
         public int MathesPlayed { get; set; }
@@ -32,12 +29,9 @@ namespace Magazin_for_game
         public int Commendation { get; set; }
         public int Reports { get; set; }
         public string Email { get; set; }
+        public string PasswordPlayer { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sale { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsedItemSets> UsedItemSets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }
